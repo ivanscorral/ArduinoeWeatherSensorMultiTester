@@ -98,3 +98,36 @@ BMP280 Forced Mode Test.
 FBMP280 DATA = {temperature: 24.29 ºC, pressure: 1012.97 hPa, altitude: 2.34 m} New record in 5 seconds
 FBMP280 DATA = {temperature: 24.29 ºC, pressure: 1012.97 hPa, altitude: 2.35 m} New record in 5 seconds
 ```
+
+## Adding a third sensor
+
+With proper wiring, I connnected the SHT31 sensor and was greeted with the following output on I2C scan:
+```
+=================================================================================================================================== [SUCCESS] Took 6.42 seconds ===================================================================================================================================
+--- Available filters and text transformations: colorize, debug, default, direct, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Miniterm on COM20  9600,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+I2C scan running for 3 times, delay is 2.50 seconds.
+I2C device found at address 0x40  !
+I2C device found at address 0x44  !
+I2C device found at address 0x76  !
+done
+
+I2C scan running for 2 times, delay is 2.50 seconds.
+I2C device found at address 0x40  !
+I2C device found at address 0x44  !
+I2C device found at address 0x76  !
+done
+
+I2C scan running for 1 times, delay is 2.50 seconds.
+I2C device found at address 0x40  !
+I2C device found at address 0x44  !
+I2C device found at address 0x76  !
+done
+
+BMP280 Forced Mode Test.
+FBMP280 DATA = {temperature: 27.02 ºC, pressure: 1013.07 hPa, altitude: 1.52 m} New record in 5 seconds
+```
+
+As can be seen, a new I2C device popped up on our scanner, with id 0x44, this is good, because we dont have overlapping id's (yet...).

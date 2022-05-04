@@ -7,7 +7,6 @@ void setup_wire(bool first_iteration)
     Wire.begin();
     while (!Serial)
       delay(20);
-    Serial.println(" setup done");
   }
   else
   {

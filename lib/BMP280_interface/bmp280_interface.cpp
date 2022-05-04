@@ -27,7 +27,7 @@ void bmp280_interface::setup_bmp(uint16_t i2c_address)
 void bmp280_interface::debug_serial()
 {
   sensor_data data = read_bmp();
-  Serial.print(F("FBMP280 DATA = {temperature: "));
+  Serial.print(F("BMP280 DATA = {temperature: "));
   Serial.print(data.temperature, 2);
   Serial.print(F(" ºC, pressure: "));
   Serial.print(data.pressure_hPa);
