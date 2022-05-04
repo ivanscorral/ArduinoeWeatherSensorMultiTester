@@ -19,9 +19,9 @@ void loop() {
   // must call this to wake sensor up and get new measurement data
   // it blocks until measurement is complete
 
-
+  bmp_sensor.debug_serial();
   Serial.println("New record in 5 seconds");
-  delay(5000)
+  delay(5000);
 
 
 }
