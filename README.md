@@ -67,3 +67,34 @@ BMP280 Forced Mode Test.
 BMP280 DATA = {temperature: 24.78 ºC, pressure: 1012.93 hPa, altitude: 2.65 m} New record in 5 seconds
 BMP280 DATA = {temperature: 24.78 ºC, pressure: 1012.93 hPa, altitude: 2.64 m} New record in 5 seconds
 ```
+
+## I2C scanner configurable
+
+A few changes are made to i2c scanner, with customizable delay between reads and more loggging, example output:
+
+```
+=================================================================================================================================== [SUCCESS] Took 6.52 seconds ===================================================================================================================================
+--- Available filters and text transformations: colorize, debug, default, direct, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Miniterm on COM20  9600,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+␀␀ setup done
+I2C scan running for 3 times, delay is 2.50 seconds.
+I2C device found at address 0x40  !
+I2C device found at address 0x76  !
+done
+
+I2C scan running for 2 times, delay is 2.50 seconds.
+I2C device found at address 0x40  !
+I2C device found at address 0x76  !
+done
+
+I2C scan running for 1 times, delay is 2.50 seconds.
+I2C device found at address 0x40  !
+I2C device found at address 0x76  !
+done
+
+BMP280 Forced Mode Test.
+FBMP280 DATA = {temperature: 24.29 ºC, pressure: 1012.97 hPa, altitude: 2.34 m} New record in 5 seconds
+FBMP280 DATA = {temperature: 24.29 ºC, pressure: 1012.97 hPa, altitude: 2.35 m} New record in 5 seconds
+```

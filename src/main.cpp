@@ -1,14 +1,11 @@
 #include "i2c_scanner.h"
 #include "bmp280_interface.h"
 
-//Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
-//Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO,  BMP_SCK);
-
 bmp280_interface bmp_sensor;
 
 void setup() {
   Serial.begin(9600);
-  read_i2c(5);
+  read_i2c(3, 2500);
   Serial.println(F("BMP280 Forced Mode Test."));
   bmp_sensor = bmp280_interface();
   bmp_sensor.setup_bmp(0x76);
