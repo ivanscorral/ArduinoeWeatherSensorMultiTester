@@ -29,7 +29,7 @@ void bmp280_interface::debug_serial(){
         Serial.print(data. pressure_hPa);
         Serial.print (" hPa, altitude: ");
         Serial.print(data.altitude);
-        Serial.print(" m}");
+        Serial.print(" m} ");
 }
 sensor_data bmp280_interface::read_bmp(){
     sensor_data result; 
@@ -39,7 +39,7 @@ sensor_data bmp280_interface::read_bmp(){
         result.pressure_hPa = bmp.readPressure() / 100.0f;
 
         result.altitude = bmp.readAltitude(1013.25); /* Adjusted to local forecast! */
-        
+
         delay(2000);
   } else {
         Serial.println("Forced measurement failed!");

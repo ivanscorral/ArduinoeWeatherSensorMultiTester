@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include <Adafruit_BMP280.h>
 
 #define BMP_SCK  (13)
