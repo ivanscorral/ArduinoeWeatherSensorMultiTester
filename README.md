@@ -1,2 +1,25 @@
 # ArduinoeWeatherSensorMultiTester
 Project for measuring various temperature sensors connected in parallel via I2C
+
+## Example output as of 04052022 @ commmit 463600788019ee250e376094c15926ca65ade84d
+
+```
+=================================================================================================================================== [SUCCESS] Took 7.87 seconds ===================================================================================================================================
+--- Available filters and text transformations: colorize, debug, default, direct, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Miniterm on COM19  9600,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+BMP280 Forced Mode Test.
+BMP280 DATA = {temperature: 25.13 ºC, pressure: 1012.68 hPa, altitude: 4.78 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.11 ºC, pressure: 1012.68 hPa, altitude: 4.77 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.09 ºC, pressure: 1012.69 hPa, altitude: 4.71 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.08 ºC, pressure: 1012.69 hPa, altitude: 4.68 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.07 ºC, pressure: 1012.69 hPa, altitude: 4.64 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.06 ºC, pressure: 1012.69 hPa, altitude: 4.62 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.05 ºC, pressure: 1012.70 hPa, altitude: 4.58 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.04 ºC, pressure: 1012.70 hPa, altitude: 4.55 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.03 ºC, pressure: 1012.71 hPa, altitude: 4.51 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.02 ºC, pressure: 1012.71 hPa, altitude: 4.47 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.01 ºC, pressure: 1012.72 hPa, altitude: 4.45 m}New record in 5 seconds
+BMP280 DATA = {temperature: 25.00 ºC, pressure: 1012.72 hPa, altitude: 4.44 m}New record in 5 seconds
+```
