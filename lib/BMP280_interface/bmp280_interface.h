@@ -24,9 +24,9 @@ private:
 
 public:
     uint16_t get_i2c_addr();
-    void debug_serial();
+    void debug_serial(float sea_level_pressure = 1013.25f);
     void setup_bmp(uint16_t i2c_addr);
-    sensor_data read_bmp();
+    sensor_data read_bmp(float sea_level_pressure = 1013.25f);
     bmp280_interface();
     ~bmp280_interface();
 };

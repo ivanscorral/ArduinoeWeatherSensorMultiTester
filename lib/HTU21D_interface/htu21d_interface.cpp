@@ -2,25 +2,32 @@
 
 htu21d_interface::htu21d_interface()
 {
-    htu = Adafruit_HTU21DF();
+  htu = Adafruit_HTU21DF();
 }
 
-
-void htu21d_interface::setup_htu() {
-  if (!htu.begin() || !Serial) {
-    Serial.println("Couldn't find sensor!");
-    while (1);
+void htu21d_interface::setup_htu()
+{
+  if (!htu.begin() || !Serial)
+  {
+    Serial.println(F("Couldn't find sensor!"));
+    while (1)
+      ;
   }
 }
-
-htu_data htu21d_interface::read_htu(uint8_t iterations, uint16_t totalTime_s){
-    Serial.println(F("HTU21D Test."));
-    htu_data result;
-    result.temperature = htu.readTemperature();
-    result.humidity = htu.readHumidity();
-    Serial.print("Temp: "); Serial.print(result.temperature); Serial.print(" C");
-    Serial.print("\t\t");
-    Serial.print("Humidity: "); Serial.print(result.humidity); Serial.println(" \%");
-    return result;
+void htu21d_interface::debug_serial()
+{
+  htu_data data = read_htu();
+  Serial.print(F("{sensor: 'htu21d' { temperature: "));
+  Serial.print(data.temperature, 2);
+  Serial.print(F(" ºC, humidity: "));
+  Serial.print(data.humidity);
+  Serial.println(F(" % }} "));
 }
 
+htu_data htu21d_interface::read_htu()
+{
+  htu_data result;
+  result.temperature = htu.readTemperature();
+  result.humidity = htu.readHumidity();
+  return result;
+}

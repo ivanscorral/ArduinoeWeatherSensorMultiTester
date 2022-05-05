@@ -166,6 +166,8 @@ Temp: 23.62 C           Humidity: 60.73 %
 BMP280 DATA = {temperature: 24.61 ºC, pressure: 1018.13 hPa, altitude: -40.55 m} 
 New record in 5 seconds
 
+
+
 ```  
 ### After sensors warmed up
 ```
@@ -190,4 +192,27 @@ HTU21D Test.
 Temp: 23.10 C           Humidity: 60.18 %
 BMP280 DATA = {temperature: 23.90 ºC, pressure: 1018.14 hPa, altitude: -40.64 m} 
 New record in 5 seconds
+```
+
+## Refactored and unified output
+
+All serial prints were removed except for the functions used for debug, which has been modified to output a json file with its basic parameters. This will help future processing of data variance and reliability of each sensor. Added also local pressure level option, default is 1013.25 hPA.
+
+**New ouput**
+```
+New scan in 5.00 seconds
+{sensor: 'htu21d' { temperature: 23.10 ºC, humidity: 61.27 % }} 
+{sensor: 'bmp280' { temperature: 24.23 ºC, pressure: 1018.55 hPa, altitude: -3.28 m }} 
+New scan in 5.00 seconds
+{sensor: 'htu21d' { temperature: 23.09 ºC, humidity: 61.29 % }} 
+{sensor: 'bmp280' { temperature: 24.22 ºC, pressure: 1018.54 hPa, altitude: -3.24 m }} 
+New scan in 5.00 seconds
+{sensor: 'htu21d' { temperature: 23.09 ºC, humidity: 61.32 % }} 
+{sensor: 'bmp280' { temperature: 24.22 ºC, pressure: 1018.54 hPa, altitude: -3.21 m }} 
+New scan in 5.00 seconds
+{sensor: 'htu21d' { temperature: 23.11 ºC, humidity: 61.33 % }} 
+{sensor: 'bmp280' { temperature: 24.21 ºC, pressure: 1018.53 hPa, altitude: -3.18 m }} 
+New scan in 5.00 seconds
+{sensor: 'htu21d' { temperature: 23.08 ºC, humidity: 61.44 % }} 
+{sensor: 'bmp280' { temperature: 24.20 ºC, pressure: 1018.53 hPa, altitude: -3.12 m }}
 ```

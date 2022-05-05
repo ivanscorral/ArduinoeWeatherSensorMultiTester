@@ -6,24 +6,22 @@ void setup_wire(bool first_iteration)
   {
     Wire.begin();
     while (!Serial)
-      delay(10);
+      delay(1);
   }
   else
-  {
     return;
-  }
 }
 void read_i2c(uint8_t iterations, long delayMs)
 {
   uint8_t i = 0;
-  setup_wire(i == 0);
+  setup_wire(!i);
   for (i = 0; i < iterations; i++)
   {
     Serial.print(F("I2C scan running for "));
     Serial.print(iterations - i);
     Serial.print(F(" times, delay is "));
     Serial.print((float)delayMs / 1000.0f);
-    Serial.println(" seconds.");
+    Serial.println(F(" seconds."));
     scan_i2c();
     delay(delayMs);
   }
@@ -32,7 +30,7 @@ void read_i2c(uint8_t iterations, long delayMs)
 void scan_i2c()
 {
   byte error, address;
-  int nDevices;
+  uint8_t nDevices;
 
   nDevices = 0;
   for (address = 1; address < 127; address++)
@@ -54,7 +52,7 @@ void scan_i2c()
     {
       Serial.print(F("Unknown error at address 0x"));
       if (address < 16)
-        Serial.print("0");
+        Serial.print(0);
       Serial.println(address, HEX);
     }
   }

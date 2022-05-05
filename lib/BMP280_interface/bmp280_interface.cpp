@@ -24,29 +24,25 @@ void bmp280_interface::setup_bmp(uint16_t i2c_address)
                   Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
 }
 
-void bmp280_interface::debug_serial()
+void bmp280_interface::debug_serial(float sea_level_pressure = 1013.25f)
 {
-  sensor_data data = read_bmp();
-  Serial.print(F("BMP280 DATA = {temperature: "));
+  sensor_data data = read_bmp(sea_level_pressure);
+  Serial.print(F("{sensor: 'bmp280' { temperature: "));
   Serial.print(data.temperature, 2);
   Serial.print(F(" ºC, pressure: "));
   Serial.print(data.pressure_hPa);
   Serial.print(F(" hPa, altitude: "));
   Serial.print(data.altitude);
-  Serial.print(F(" m} "));
+  Serial.print(F(" m }} "));
 }
-sensor_data bmp280_interface::read_bmp()
+sensor_data bmp280_interface::read_bmp(float sea_level_pressure = 1013.25f)
 {
   sensor_data result;
   if (bmp280_interface::bmp.takeForcedMeasurement())
   {
-    // can now print out the new measurements
     result.temperature = bmp.readTemperature();
     result.pressure_hPa = bmp.readPressure() / 100.0f;
-
-    result.altitude = bmp.readAltitude(1013.25); /* Adjusted to local forecast! */
-
-    delay(2000);
+    result.altitude = bmp.readAltitude(sea_level_pressure);
   }
   else
   {
