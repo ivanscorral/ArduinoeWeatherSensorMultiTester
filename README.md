@@ -131,3 +131,63 @@ FBMP280 DATA = {temperature: 27.02 ºC, pressure: 1013.07 hPa, altitude: 1.52 m}
 ```
 
 As can be seen, a new I2C device popped up on our scanner, with id 0x44, this is good, because we dont have overlapping id's (yet...).
+
+
+
+## Reading from 2 sensors at the same (almost) time
+
+```
+HTU21D Test.
+Temp: 23.67 C           Humidity: 59.96 %
+BMP280 DATA = {temperature: 24.82 ºC, pressure: 1018.13 hPa, altitude: -40.54 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.62 C           Humidity: 60.09 %
+BMP280 DATA = {temperature: 24.78 ºC, pressure: 1018.13 hPa, altitude: -40.56 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.57 C           Humidity: 60.20 %
+BMP280 DATA = {temperature: 24.74 ºC, pressure: 1018.13 hPa, altitude: -40.56 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.54 C           Humidity: 60.33 %
+BMP280 DATA = {temperature: 24.71 ºC, pressure: 1018.13 hPa, altitude: -40.56 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.73 C           Humidity: 60.38 %
+BMP280 DATA = {temperature: 24.67 ºC, pressure: 1018.13 hPa, altitude: -40.54 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.65 C           Humidity: 60.56 %
+BMP280 DATA = {temperature: 24.64 ºC, pressure: 1018.13 hPa, altitude: -40.55 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.62 C           Humidity: 60.73 %
+BMP280 DATA = {temperature: 24.61 ºC, pressure: 1018.13 hPa, altitude: -40.55 m} 
+New record in 5 seconds
+
+```  
+### After sensors warmed up
+```
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.01 C           Humidity: 60.62 %
+BMP280 DATA = {temperature: 23.91 ºC, pressure: 1018.13 hPa, altitude: -40.59 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.05 C           Humidity: 60.30 %
+BMP280 DATA = {temperature: 23.91 ºC, pressure: 1018.14 hPa, altitude: -40.61 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.08 C           Humidity: 59.86 %
+BMP280 DATA = {temperature: 23.91 ºC, pressure: 1018.13 hPa, altitude: -40.59 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.09 C           Humidity: 59.83 %
+BMP280 DATA = {temperature: 23.90 ºC, pressure: 1018.14 hPa, altitude: -40.62 m} 
+New record in 5 seconds
+HTU21D Test.
+Temp: 23.10 C           Humidity: 60.18 %
+BMP280 DATA = {temperature: 23.90 ºC, pressure: 1018.14 hPa, altitude: -40.64 m} 
+New record in 5 seconds
+```

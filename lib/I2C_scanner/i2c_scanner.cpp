@@ -6,7 +6,7 @@ void setup_wire(bool first_iteration)
   {
     Wire.begin();
     while (!Serial)
-      delay(20);
+      delay(10);
   }
   else
   {
@@ -52,7 +52,7 @@ void scan_i2c()
     }
     else if (error == 4)
     {
-      Serial.print("Unknown error at address 0x");
+      Serial.print(F("Unknown error at address 0x"));
       if (address < 16)
         Serial.print("0");
       Serial.println(address, HEX);
@@ -60,6 +60,4 @@ void scan_i2c()
   }
   if (nDevices == 0)
     Serial.println(F("No I2C devices found\n"));
-  else
-    Serial.println(F("done\n"));
 }

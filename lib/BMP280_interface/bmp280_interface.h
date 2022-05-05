@@ -1,3 +1,5 @@
+#ifndef BMP_INTERFACE_H
+#define BMP_INTERFACE_H
 #include <Adafruit_BMP280.h>
 
 #define BMP_SCK (13)
@@ -28,3 +30,4 @@ public:
     bmp280_interface();
     ~bmp280_interface();
 };
+#endif
