@@ -1,5 +1,6 @@
 #ifndef BMP_INTERFACE_H
 #define BMP_INTERFACE_H
+#include "sensor_structs.h"
 #include <Adafruit_BMP280.h>
 
 #define BMP_SCK (13)
@@ -9,25 +10,20 @@
 
 #define BMP_ADDR 0x76
 
-typedef struct sensor_data
-{
-    float temperature;
-    float pressure_hPa;
-    float altitude;
-} sensor_data;
+
 
 class bmp280_interface
 {
 private:
     Adafruit_BMP280 bmp; // I2C
     uint16_t i2c_addr;
-
+    float sea_level_p;
 public:
     uint16_t get_i2c_addr();
-    void debug_serial(float sea_level_pressure = 1013.25f);
-    void setup_bmp(uint16_t i2c_addr);
-    sensor_data read_bmp(float sea_level_pressure = 1013.25f);
-    bmp280_interface();
+    void debug_sensor();
+    void setup_sensor(uint16_t i2c_addr);
+    sensor_data read_sensor();
+    bmp280_interface(float sea_level_pressure = 1013.25f);
     ~bmp280_interface();
 };
 #endif

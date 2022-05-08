@@ -1,12 +1,12 @@
 #include "bmp280_interface.h"
 
-bmp280_interface::bmp280_interface()
+bmp280_interface::bmp280_interface(float sea_level_pressure = 1013.25f)
 {
-  i2c_addr = 0x0;
+  sea_level_p = sea_level_pressure;
 }
 bmp280_interface::~bmp280_interface() {}
 
-void bmp280_interface::setup_bmp(uint16_t i2c_address)
+void bmp280_interface::setup_sensor(uint16_t i2c_address)
 {
   i2c_addr = i2c_address;
   if (!bmp.begin(i2c_addr))
@@ -24,25 +24,25 @@ void bmp280_interface::setup_bmp(uint16_t i2c_address)
                   Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
 }
 
-void bmp280_interface::debug_serial(float sea_level_pressure = 1013.25f)
+void bmp280_interface::debug_sensor()
 {
-  sensor_data data = read_bmp(sea_level_pressure);
-  Serial.print(F("{sensor: 'bmp280' { temperature: "));
+  sensor_data data = read_sensor();
+  Serial.print(F("\n{sensor: 'bmp280' { temperature: '"));
   Serial.print(data.temperature, 2);
-  Serial.print(F(" ºC, pressure: "));
+  Serial.print(F(" ºC' , pressure: '"));
   Serial.print(data.pressure_hPa);
-  Serial.print(F(" hPa, altitude: "));
+  Serial.print(F(" hPa', altitude: '"));
   Serial.print(data.altitude);
-  Serial.print(F(" m }} "));
+  Serial.println(F(" m'}} "));
 }
-sensor_data bmp280_interface::read_bmp(float sea_level_pressure = 1013.25f)
+sensor_data bmp280_interface::read_sensor()
 {
   sensor_data result;
   if (bmp280_interface::bmp.takeForcedMeasurement())
   {
     result.temperature = bmp.readTemperature();
     result.pressure_hPa = bmp.readPressure() / 100.0f;
-    result.altitude = bmp.readAltitude(sea_level_pressure);
+    result.altitude = bmp.readAltitude(sea_level_p);
   }
   else
   {
