@@ -8,13 +8,13 @@ sht31_interface::sht31_interface()
 void sht31_interface::setup_sensor()
 {
     while (!Serial)
-        delay(10); // will pause Zero, Leonardo, etc until serial console opens
+        delay(10);
 
 #ifdef DEBUG
     Serial.println("SHT31 test");
 #endif
     if (!sht31.begin(SHT_ADDR))
-    { // Set to 0x45 for alternate i2c addr
+    {
 #ifdef DEBUG
         Serial.println("Couldn't find SHT31");
 #endif // DEBUG
