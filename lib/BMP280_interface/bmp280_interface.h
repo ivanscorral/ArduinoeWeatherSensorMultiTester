@@ -23,7 +23,7 @@ public:
     void debug_sensor();
     void setup_sensor(uint16_t i2c_addr);
     sensor_data read_sensor();
-    bmp280_interface(float sea_level_pressure = 1013.25f);
+    bmp280_interface(float sea_level_pressure);
     ~bmp280_interface();
 };
 #endif

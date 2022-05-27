@@ -1,6 +1,6 @@
 #include "bmp280_interface.h"
 
-bmp280_interface::bmp280_interface(float sea_level_pressure = 1013.25f)
+bmp280_interface::bmp280_interface(float sea_level_pressure)
 {
   sea_level_p = sea_level_pressure;
 }
