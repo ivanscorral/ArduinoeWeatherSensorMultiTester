@@ -1,4 +1,6 @@
 #include "i2c_scanner.h"
+#include "hdc1080_interface.h"
+#include "aht20_interface.h"
 /*
 #include "bmp280_interface.h"
 #include "htu21d_interface.h"
@@ -12,13 +14,16 @@ bmp280_interface bmp_sensor;
 htu21d_interface htu_sensor;
 sht31_interface sht_sensor = sht31_interface();
 */
-
+aht20 aht_interface;
+hdc1080 hdc1080_interface;
 void setup()
 {
 
   boot_time = millis() / 1000.0f;
   Serial.begin(115200);
   read_i2c(3, 1500);
+  aht20.setup_sensor();
+  hdc1080.setup_sensor();
 /*
   htu_sensor.setup_sensor();
   bmp_sensor.setup_sensor(BMP280_ADDRESS_ALT);
@@ -33,6 +38,8 @@ void loop()
   htu_sensor.debug_sensor();
   bmp_sensor.debug_sensor();
 */
+  aht20.debug_sensor();
+  hdc1080.debug_sensor();
   uint16_t loop_delay = random(5, 15) * 1000;
 
   if (seconds_since_active == 0)

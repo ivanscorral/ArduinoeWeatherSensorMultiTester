@@ -12,7 +12,6 @@ class hdc1080_interface
 {
 private:
     ClosedCube_HDC1080 hdc; // I2C
-    float sea_level_p;
     void printSerialnumber();
 public:
     void debug_sensor();
